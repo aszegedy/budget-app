@@ -198,11 +198,12 @@ let UIController = (function() {
       fields = document.querySelectorAll(DOMstrings.inputDescription + ', ' + DOMstrings.inputValue);
       console.log(fields);
       fieldsArr = [...fields];
+      console.log(fieldsArr);
       // fieldsArr = Array.from(fields);
       // fieldsArr = Array.prototype.slice.call(fields);
 
       fieldsArr.forEach((current, index, array) => {
-        current.value = ""
+        current.value = "";
       });
 
       fieldsArr[0].focus();
@@ -243,7 +244,8 @@ let UIController = (function() {
       year = now.getFullYear();
       months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       month = now.getMonth();
-      document.querySelector(DOMstrings.dateLabel).textContent = months[month-1] + ' ' + year;
+      console.log(month);
+      document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
     },
     changedType: function() {
       let fields = document.querySelectorAll(
@@ -251,7 +253,9 @@ let UIController = (function() {
         DOMstrings.inputDescription + ',' +
         DOMstrings.inputValue
       );
-      [...fields].forEach((curr) => {curr.classList.toggle('red-focus')});
+      [...fields].forEach((curr) => {
+        curr.classList.toggle('red-focus')
+      });
       document.querySelector(DOMstrings.inputBtn).classList.toggle('red');
     },
 
@@ -305,7 +309,7 @@ let controller = (function(budgetCtrl, UICtrl) {
     let input, newItem;
     // Input
     input = UICtrl.getInput();
-    console.log(input);
+    // console.log(input);
 
     if (input.description !== '' && !isNaN(input.value) && input.value > 0) {
       // Add to the cudget controller
